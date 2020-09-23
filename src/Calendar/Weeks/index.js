@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import moment from 'moment'
 import { WeekContainer, Day, Number } from './style'
+import Reminder from '../Reminder'
 
 const Weeks = () => {
   const [firstDay, setFirstDay] = useState(moment())
+  const [reminder, setReminder] = useState(-1)
+  const [openModal, setOpenModal] = useState(false)
   const daysMonth = []
   const blank = []
   const monthLength = firstDay.daysInMonth()
@@ -22,11 +25,20 @@ const Weeks = () => {
 
   const total = [30, 31, ...daysMonth, 1, 2, 3]
 
+  const renderReminder = useCallback((index) => {
+    setReminder(index)
+    setOpenModal(true)
+  })
+
   return (
     <WeekContainer>
       {total.map((item, index) => (
-        <Day key={index}>
+        <Day key={index} onClick={() => renderReminder(index)}>
           <Number>{item}</Number>
+          {reminder === index && (
+            <Reminder openModal={openModal}/>
+          )}
+
         </Day>
       ))}
     </WeekContainer>

@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { createGlobalStyle } from 'styled-components'
 import Index from './Calendar'
+import 'antd/dist/antd.css'
 
 const GlobalStyle = createGlobalStyle`
   * {
