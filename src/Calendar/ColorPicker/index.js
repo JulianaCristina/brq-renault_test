@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react'
-import { Button } from 'antd'
 import { GithubPicker } from 'react-color'
-import { Popover } from './styles'
+import { Popover, ButtonPicker } from './styles'
 
 const ColorPicker = () => {
   const [showColorPicker, setColorPicker] = useState(false)
@@ -13,11 +12,13 @@ const ColorPicker = () => {
 
   const handleChange = useCallback((color) => {
     setColor(color.hex)
+    console.log(color.hex)
+    setColorPicker(false)
   }, [])
 
   return (
     <>
-      <Button onClick={ handleClick }>Pick Color</Button>
+      <ButtonPicker onClick={ handleClick } color={color}>Pick Color</ButtonPicker>
       {
         showColorPicker
           ? <Popover>

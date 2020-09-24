@@ -19,34 +19,41 @@ const Reminder = ({ openModal }) => {
       onCancel={handleClose}
     >
       <Form
+        layout='vertical'
         name="reminder"
       >
         <Form.Item
           label="Reminder Description"
           name="description"
+          wrapperCol={12}
           rules={[{ required: true, message: 'The limit is 30 characters!', max: 30 }]}
         >
           <Input />
         </Form.Item>
+        <Form.Item>
+          <Form.Item
+            label="City"
+            name="city"
+            rules={[{ required: true }]}
+          >
+            <Input small/>
+          </Form.Item>
+          <span>Teste</span>
+        </Form.Item>
+
         <Form.Item
-          label="City"
-          name="city"
-          rules={[{ required: true }]}
+          label="Select Date and time"
+          name="dateTime"
         >
-          <Input />
+          <DatePicker showTime />
+        </Form.Item>
+        <Form.Item
+          label='Select an Color'
+        >
+          <ColorPicker/>
         </Form.Item>
       </Form>
-      <Form.Item
-        label="Select Date and time"
-        name="dateTime"
-      >
-        <DatePicker showTime />
-      </Form.Item>
-      <Form.Item
-        label='Select an Color'
-      >
-        <ColorPicker/>
-      </Form.Item>
+
     </Modal>
   )
 }

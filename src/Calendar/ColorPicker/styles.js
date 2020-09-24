@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Button } from 'antd'
 
 export const Popover = styled.div`
   position: absolute;
@@ -11,4 +12,10 @@ export const Cover = styled.div`
       right: 0;
       bottom: 0;
       left: 0;
+`
+export const ButtonPicker = styled(Button)`
+    
+     background: ${props => props.color};
+    
+ 
 `
